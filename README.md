@@ -7,4 +7,6 @@ Funktionalitäten:
 - Datum und Uhrzeit 
 - Ort 
 - weitere Funktionalitäten fallen mir noch nicht ein 😅.
+
+
 Teerapat Thitirungrueang s0575807
