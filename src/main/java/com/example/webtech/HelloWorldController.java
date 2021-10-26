@@ -11,4 +11,9 @@ public class HelloWorldController {
     public ModelAndView showHelloWorld() {
         return new ModelAndView("helloworld");
     }
+
+    @GetMapping(path = "/test")
+        public ModelAndView showTest() {
+        return new ModelAndView("test");
+    }
 }
