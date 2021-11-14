@@ -1,9 +1,6 @@
-package com.example.webtech.web.api;
+package com.example.webtech.persistance;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,11 +9,18 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "event_name", nullable = false)
     private String eventName;
+    @Column(name = "event_description", nullable = false)
     private String eventDes;
+    @Column(name = "event_start", nullable = false)
     private LocalDateTime eventStart;
+    @Column(name = "event_location", nullable = false)
     private String eventLocation;
+    @Column(name = "event_coordinate", nullable = false)
     private String eventCoordinate;
 
     public Event(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCoordinate) {

@@ -1,4 +1,4 @@
-package com.example.webtech.web.api;
+package com.example.webtech.persistance;
 
 
 import org.springframework.data.repository.CrudRepository;

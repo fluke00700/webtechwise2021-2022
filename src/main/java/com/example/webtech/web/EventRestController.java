@@ -1,8 +1,8 @@
 package com.example.webtech.web;
 
 
-import com.example.webtech.web.api.Event;
-import com.example.webtech.web.api.EventService;
+import com.example.webtech.persistance.Event;
+import com.example.webtech.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +34,7 @@ public class EventRestController {
         return service.save(event);
     }
 
-    @PostMapping(path =  "/events")
+    @PostMapping(path =  "/events/{id}")
     public Event getEvent(@PathVariable String eventId){
         long id = Long.parseLong(eventId);
         return service.get(id);

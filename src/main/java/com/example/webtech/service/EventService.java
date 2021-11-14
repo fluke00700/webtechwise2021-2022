@@ -1,5 +1,7 @@
-package com.example.webtech.web.api;
+package com.example.webtech.service;
 
+import com.example.webtech.persistance.Event;
+import com.example.webtech.persistance.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
