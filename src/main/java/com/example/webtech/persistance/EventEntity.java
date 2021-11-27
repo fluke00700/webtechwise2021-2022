@@ -6,8 +6,18 @@ import java.time.LocalDateTime;
 
 
 
-
+    @Entity(name = "events")
     public class EventEntity {
+
+        public EventEntity(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCoordinate) {
+            this.eventName = eventName;
+            this.eventDes = eventDes;
+            this.eventStart = eventStart;
+            this.eventLocation = eventLocation;
+            this.eventCoordinate = eventCoordinate;
+        }
+
+        protected EventEntity() {}
 
 
         @Id
@@ -26,13 +36,7 @@ import java.time.LocalDateTime;
         @Column(name = "event_coordinate", nullable = false)
         private String eventCoordinate;
 
-        public EventEntity(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCoordinate) {
-            this.eventName = eventName;
-            this.eventDes = eventDes;
-            this.eventStart = eventStart;
-            this.eventLocation = eventLocation;
-            this.eventCoordinate = eventCoordinate;
-        }
+
 
         public Long getId() {
             return id;

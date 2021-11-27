@@ -1,18 +1,9 @@
-package com.example.webtech.persistance;
+package com.example.webtech.web;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collector;
 
-
-public class Event {
-
-
-
-    private Long id;
-
-
+public class EventCreateRequest {
     private String eventName;
 
     private String eventDes;
@@ -23,10 +14,7 @@ public class Event {
 
     private String eventCoordinate;
 
-
-
-    public Event(Long id,String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCoordinate) {
-        this.id =id;
+    public EventCreateRequest(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCoordinate) {
         this.eventName = eventName;
         this.eventDes = eventDes;
         this.eventStart = eventStart;
@@ -34,13 +22,6 @@ public class Event {
         this.eventCoordinate = eventCoordinate;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getEventName() {
         return eventName;
@@ -81,6 +62,5 @@ public class Event {
     public void setEventCoordinate(String eventCoordinate) {
         this.eventCoordinate = eventCoordinate;
     }
-
-
 }
+
