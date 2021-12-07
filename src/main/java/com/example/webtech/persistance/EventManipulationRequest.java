@@ -23,6 +23,7 @@ public class EventManipulationRequest {
         this.eventCoordinate = eventCoordinate;
     }
 
+    public EventManipulationRequest() {}
 
     public String getEventName() {
         return eventName;
