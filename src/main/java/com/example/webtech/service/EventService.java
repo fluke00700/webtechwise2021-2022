@@ -5,7 +5,6 @@ import com.example.webtech.persistance.EventEntity;
 import com.example.webtech.persistance.EventManipulationRequest;
 import com.example.webtech.persistance.EventRepository;
 import com.example.webtech.web.EventCreateRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class EventService {
                 eventEntity.getEventDes(),
                 eventEntity.getEventStart(),
                 eventEntity.getEventLocation(),
-                eventEntity.getEventCoordinate());
+                eventEntity.getEventCategory());
     }
 
     public EventService(EventRepository eventRepository) {
@@ -32,14 +31,14 @@ public class EventService {
 
 
     public Event create(EventCreateRequest request){
-        EventEntity eventEntity = new EventEntity(request.getEventName(), request.getEventDes(),request.getEventStart(), request.getEventLocation(), request.getEventCoordinate());
+        EventEntity eventEntity = new EventEntity(request.getEventName(), request.getEventDes(),request.getEventStart(), request.getEventLocation(), request.getEventCategory());
         eventRepository.save(eventEntity);
         return transformEntity(eventEntity);
     }
 
     public List<Event> findAll() {
-        List<EventEntity> persons = (List<EventEntity>) eventRepository.findAll();
-        return persons.stream()
+        List<EventEntity> events = (List<EventEntity>) eventRepository.findAll();
+        return events.stream()
                 .map(this::transformEntity)
                 .collect(Collectors.toList());
 
@@ -56,7 +55,7 @@ public class EventService {
                                     , request.getEventDes()
                                     , request.getEventStart()
                                     , request.getEventLocation()
-                                    , request.getEventCoordinate());
+                                    , request.getEventCategory());
         eventEntity =eventRepository.save(eventEntity);
         return transformEntity(eventEntity);
     }
@@ -72,7 +71,7 @@ public class EventService {
         eventEntity.setEventDes(request.getEventDes());
         eventEntity.setEventStart(request.getEventStart());
         eventEntity.setEventLocation(request.getEventLocation());
-        eventEntity.setEventCoordinate(request.getEventCoordinate());
+        eventEntity.setEventCategory(request.getEventCategory());
         eventEntity = eventRepository.save(eventEntity);
         return transformEntity(eventEntity);
     }
@@ -84,7 +83,9 @@ public class EventService {
         return eventRepository.existsById(id);
     }
 
-
+    public Long countEvents(){
+        return eventRepository.count();
+    }
 
 
     }

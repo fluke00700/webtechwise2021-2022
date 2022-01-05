@@ -9,12 +9,12 @@ import java.time.LocalDateTime;
     @Entity(name = "events")
     public class EventEntity {
 
-        public EventEntity(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCoordinate) {
+        public EventEntity(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCategory) {
             this.eventName = eventName;
             this.eventDes = eventDes;
             this.eventStart = eventStart;
             this.eventLocation = eventLocation;
-            this.eventCoordinate = eventCoordinate;
+            this.eventCategory = eventCategory;
         }
 
         protected EventEntity() {}
@@ -33,8 +33,8 @@ import java.time.LocalDateTime;
         private LocalDateTime eventStart;
         @Column(name = "event_location", nullable = false)
         private String eventLocation;
-        @Column(name = "event_coordinate", nullable = false)
-        private String eventCoordinate;
+        @Column(name = "event_category", nullable = false)
+        private String eventCategory;
 
 
 
@@ -78,12 +78,12 @@ import java.time.LocalDateTime;
             this.eventLocation = eventLocation;
         }
 
-        public String getEventCoordinate() {
-            return eventCoordinate;
+        public String getEventCategory() {
+            return eventCategory;
         }
 
-        public void setEventCoordinate(String eventCoordinate) {
-            this.eventCoordinate = eventCoordinate;
+        public void setEventCategory(String eventCoordinate) {
+            this.eventCategory = eventCoordinate;
         }
     }
 

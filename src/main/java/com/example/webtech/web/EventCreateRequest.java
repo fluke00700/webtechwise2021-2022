@@ -1,6 +1,5 @@
 package com.example.webtech.web;
 
-import javax.persistence.Column;
 import java.time.LocalDateTime;
 
 public class EventCreateRequest {
@@ -12,14 +11,14 @@ public class EventCreateRequest {
 
     private String eventLocation;
 
-    private String eventCoordinate;
+    private String eventCategory;
 
-    public EventCreateRequest(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCoordinate) {
+    public EventCreateRequest(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCategory) {
         this.eventName = eventName;
         this.eventDes = eventDes;
         this.eventStart = eventStart;
         this.eventLocation = eventLocation;
-        this.eventCoordinate = eventCoordinate;
+        this.eventCategory = eventCategory;
     }
 
 
@@ -55,12 +54,12 @@ public class EventCreateRequest {
         this.eventLocation = eventLocation;
     }
 
-    public String getEventCoordinate() {
-        return eventCoordinate;
+    public String getEventCategory() {
+        return eventCategory;
     }
 
-    public void setEventCoordinate(String eventCoordinate) {
-        this.eventCoordinate = eventCoordinate;
+    public void setEventCategory(String eventCategory) {
+        this.eventCategory = eventCategory;
     }
 }
 

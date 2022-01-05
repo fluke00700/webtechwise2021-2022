@@ -2,11 +2,8 @@ package com.example.webtech.web;
 
 
 import com.example.webtech.persistance.Event;
-import com.example.webtech.persistance.EventEntity;
 import com.example.webtech.persistance.EventManipulationRequest;
 import com.example.webtech.service.EventService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,10 +67,10 @@ public class EventRestController {
         && request.getEventDes() != null
         && request.getEventLocation() != null
         && request.getEventStart() != null
-        && request.getEventCoordinate() != null
+        && request.getEventCategory() != null
         && !request.getEventName().isBlank()
         && !request.getEventDes().isBlank()
         && !request.getEventLocation().isBlank()
-        && !request.getEventCoordinate().isBlank();
+        && !request.getEventCategory().isBlank();
     }
 }

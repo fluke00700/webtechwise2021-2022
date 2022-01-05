@@ -1,7 +1,7 @@
 package com.example.webtech.persistance;
 
-import javax.persistence.Column;
 import java.time.LocalDateTime;
+
 
 public class EventManipulationRequest {
 
@@ -13,14 +13,14 @@ public class EventManipulationRequest {
 
     private String eventLocation;
 
-    private String eventCoordinate;
+    private String eventCategory;
 
-    public EventManipulationRequest(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCoordinate) {
+    public EventManipulationRequest(String eventName, String eventDes, LocalDateTime eventStart, String eventLocation, String eventCategory) {
         this.eventName = eventName;
         this.eventDes = eventDes;
         this.eventStart = eventStart;
         this.eventLocation = eventLocation;
-        this.eventCoordinate = eventCoordinate;
+        this.eventCategory = eventCategory;
     }
 
     public EventManipulationRequest() {}
@@ -57,12 +57,12 @@ public class EventManipulationRequest {
         this.eventLocation = eventLocation;
     }
 
-    public String getEventCoordinate() {
-        return eventCoordinate;
+    public String getEventCategory() {
+        return eventCategory;
     }
 
-    public void setEventCoordinate(String eventCoordinate) {
-        this.eventCoordinate = eventCoordinate;
+    public void setEventCategory(String eventCategory) {
+        this.eventCategory = eventCategory;
     }
 }
 
