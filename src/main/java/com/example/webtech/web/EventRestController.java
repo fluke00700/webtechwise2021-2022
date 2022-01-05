@@ -25,9 +25,16 @@ public class EventRestController {
 
     @PostMapping(path = "/events")
     public ResponseEntity<Void> createPerson(@RequestBody EventManipulationRequest request) throws URISyntaxException {
+        var valid = validate(request);
+        if (valid) {
         Event event = eventService.create(request);
         URI uri = new URI("/events/" + event.getId());
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.created(uri).build();}
+
+        else{
+            return ResponseEntity.badRequest().build();
+        }
+
     }
 
     @GetMapping(path = "/events")
@@ -58,5 +65,15 @@ public class EventRestController {
         else {return ResponseEntity.notFound().build();}
     }
 
-
+    private boolean validate(EventManipulationRequest request){
+        return request.getEventName() != null
+        && request.getEventDes() != null
+        && request.getEventLocation() != null
+        && request.getEventStart() != null
+        && request.getEventCoordinate() != null
+        && !request.getEventName().isBlank()
+        && !request.getEventDes().isBlank()
+        && !request.getEventLocation().isBlank()
+        && !request.getEventCoordinate().isBlank();
+    }
 }
