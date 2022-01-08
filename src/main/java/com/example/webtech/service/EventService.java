@@ -7,7 +7,9 @@ import com.example.webtech.persistance.EventRepository;
 import com.example.webtech.web.EventCreateRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,8 +32,8 @@ public class EventService {
     }
 
 
-    public Event create(EventCreateRequest request){
-        EventEntity eventEntity = new EventEntity(request.getEventName(), request.getEventDes(),request.getEventStart(), request.getEventLocation(), request.getEventCategory());
+    public Event create(EventCreateRequest request) {
+        EventEntity eventEntity = new EventEntity(request.getEventName(), request.getEventDes(), request.getEventStart(), request.getEventLocation(), request.getEventCategory());
         eventRepository.save(eventEntity);
         return transformEntity(eventEntity);
     }
@@ -52,11 +54,11 @@ public class EventService {
 
     public Event create(EventManipulationRequest request) {
         EventEntity eventEntity = new EventEntity(request.getEventName()
-                                    , request.getEventDes()
-                                    , request.getEventStart()
-                                    , request.getEventLocation()
-                                    , request.getEventCategory());
-        eventEntity =eventRepository.save(eventEntity);
+                , request.getEventDes()
+                , request.getEventStart()
+                , request.getEventLocation()
+                , request.getEventCategory());
+        eventEntity = eventRepository.save(eventEntity);
         return transformEntity(eventEntity);
     }
 
@@ -83,23 +85,33 @@ public class EventService {
         return eventRepository.existsById(id);
     }
 
-    public Long countEvents(){
+    public Long countEvents() {
         return eventRepository.count();
     }
 
 
+    public List<Event> findEventstoday() {
+
+        List<EventEntity> events = (List<EventEntity>) eventRepository.findAll();
+        List<EventEntity> resultevents = (List<EventEntity>) eventRepository.findAll();
+
+
+        LocalDateTime currentDate = LocalDateTime.now();
+        ListIterator<EventEntity> eventstoday = events.listIterator();
+        do {
+
+            EventEntity event = eventstoday.next();
+            if (
+                    (event.getEventStart().getDayOfMonth() == currentDate.getDayOfMonth())
+                            && (event.getEventStart().getMonth() == currentDate.getMonth())
+                            && (event.getEventStart().getYear() == currentDate.getYear())) {
+            } else {
+                resultevents.remove(event);
+            }
+        }
+        while (eventstoday.hasNext());
+        return resultevents.stream()
+                .map(this::transformEntity)
+                .collect(Collectors.toList());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

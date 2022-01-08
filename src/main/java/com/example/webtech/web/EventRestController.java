@@ -39,6 +39,11 @@ public class EventRestController {
         return ResponseEntity.ok(eventService.findAll());
     }
 
+    @GetMapping(path = "/eventstoday")
+    public ResponseEntity<List<Event>> fetchEventstoday() {
+        return ResponseEntity.ok(eventService.findEventstoday());
+    }
+
     @GetMapping(path = "/events/{id}")
     public ResponseEntity<Event> fetchEventById(@PathVariable Long id) {
         Event event = eventService.findById(id);
@@ -60,6 +65,11 @@ public class EventRestController {
         boolean successful = eventService.deleteById(id);
         if (successful) {return ResponseEntity.ok().build();}
         else {return ResponseEntity.notFound().build();}
+    }
+
+    @GetMapping("/events/count")
+    public Long count() {
+        return eventService.countEvents();
     }
 
     private boolean validate(EventManipulationRequest request){
