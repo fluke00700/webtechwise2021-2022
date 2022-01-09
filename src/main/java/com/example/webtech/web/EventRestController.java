@@ -44,6 +44,11 @@ public class EventRestController {
         return ResponseEntity.ok(eventService.findEventstoday());
     }
 
+    @GetMapping(path = "/events/sort/{category}")
+    public ResponseEntity<List<Event>> fetchEventsbyCategory(@PathVariable String category) {
+        return ResponseEntity.ok(eventService.findEventbyCategory(category));
+    }
+
     @GetMapping(path = "/events/{id}")
     public ResponseEntity<Event> fetchEventById(@PathVariable Long id) {
         Event event = eventService.findById(id);

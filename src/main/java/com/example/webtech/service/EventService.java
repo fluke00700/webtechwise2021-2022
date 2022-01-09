@@ -114,4 +114,20 @@ public class EventService {
                 .map(this::transformEntity)
                 .collect(Collectors.toList());
     }
+    public List<Event> findEventbyCategory(String category) {
+
+        List<EventEntity> events = (List<EventEntity>) eventRepository.findAll();
+        List<EventEntity> resultevents = (List<EventEntity>) eventRepository.findAll();
+        ListIterator<EventEntity> eventstoday = events.listIterator();
+        do {
+
+            EventEntity event = eventstoday.next();
+            if (event.getEventCategory().contains(category)==false)
+                resultevents.remove(event);
+        }
+        while (eventstoday.hasNext());
+        return resultevents.stream()
+                .map(this::transformEntity)
+                .collect(Collectors.toList());
+    }
 }
